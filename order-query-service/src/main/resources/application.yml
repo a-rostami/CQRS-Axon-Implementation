@@ -1,0 +1,28 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: order-query-service
+  datasource:
+    url: jdbc:postgresql://localhost:5435/orders
+    username: orders
+    password: orders
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+  flyway:
+    enabled: true
+
+axon:
+  axonserver:
+    servers: ${AXONSERVER_SERVERS:localhost:8124}
+  serializer:
+    events: jackson
+    messages: jackson
+    general: jackson
+  eventhandling:
+    processors:
+      order-projection:
+        mode: tracking

@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  axonserver:
+    image: axoniq/axonserver:latest
+    ports:
+      - "8024:8024"
+      - "8124:8124"
+    environment:
+      AXONSERVER_HOSTNAME: localhost
+      AXONIQ_AXONSERVER_HOSTNAME: localhost
+    volumes:
+      - axonserver-data:/data
+
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: orders
+      POSTGRES_USER: orders
+      POSTGRES_PASSWORD: orders
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+volumes:
+  axonserver-data:
+  pg-data:

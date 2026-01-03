@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: order-command-service
+
+axon:
+  axonserver:
+    servers: ${AXONSERVER_SERVERS:localhost:8124}
+  serializer:
+    events: jackson
+    messages: jackson
+    general: jackson
